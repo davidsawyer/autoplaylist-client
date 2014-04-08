@@ -45,6 +45,7 @@
 @synthesize positionSlider = _positionSlider;
 @synthesize playbackManager = _playbackManager;
 @synthesize currentTrack = _currentTrack;
+@synthesize playlists = _playlists;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -159,8 +160,6 @@
 			if (track != nil) {
 				
 				NSLog(@"XXXXXXXXXXXXXXXXXXXXXX");
-				SPSession *sesh = [SPSession sharedSession];
-				
 				[SPAsyncLoading waitUntilLoaded:track timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *tracks, NSArray *notLoadedTracks) {
 					[self.playbackManager playTrack:track callback:^(NSError *error) {
 						
@@ -207,12 +206,45 @@
 }
 
 -(void)sessionDidLoginSuccessfully:(SPSession *)aSession; {
-    NSLog(@"logged in");
+	self.playlists = [NSMutableArray array];
+	NSMutableArray *tracks = [NSMutableArray array];
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	NSLog(@"logged in");
 	
-    SPSession *session = [SPSession sharedSession];
+//    SPSession *session = [SPSession sharedSession];
+	//SPPlaylistContainer *container = session.userPlaylists;
+	[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession] timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedSession, NSArray *notLoadedSession) {
+		NSLog(@"Loaded session");
+		[dict setObject:[SPSession sharedSession].user.spotifyURL.absoluteString forKey:@"userURI"];
+		[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession].userPlaylists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedContainers, NSArray *notLoadedContainers) {
+			NSLog(@"Loaded playlist container");
+			
+			[self.playlists addObjectsFromArray:[SPSession sharedSession].userPlaylists.flattenedPlaylists];
+			[self.playlists addObject:[SPSession sharedSession].starredPlaylist ];
+			[SPAsyncLoading waitUntilLoaded:self.playlists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedPlaylists, NSArray *notLoadedPlaylists){
+				NSLog(@"Loaded playlists");
+				for(SPPlaylist *playlist in loadedPlaylists){
+					for(SPPlaylistItem *playlistItem in playlist.items){
+						SPTrack *track = playlistItem.item;
+						[tracks addObject:track.spotifyURL.absoluteString];
+					}
+				}
+				[dict setObject:tracks forKey:@"tracks"];
+				NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
+				NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+				NSLog(str);
 
-	SPPlaylistContainer *container = session.userPlaylists;
-	NSLog(@"%@", container.description);
+
+
+
+			}];
+		}];
+
+	}];
+//		NSLog(@"After");
+	//NSLog(@"%@", container.description);
+	//NSLog(container.loaded ? @"Yes":@"No");
+
 }
 
 -(void)loadPlaylists

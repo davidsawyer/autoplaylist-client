@@ -42,6 +42,7 @@
 	UISlider *_positionSlider;
 	SPPlaybackManager *_playbackManager;
 	SPTrack *_currentTrack;
+	NSMutableArray *_playlists;
 }
 
 
@@ -56,6 +57,8 @@
 
 @property (nonatomic, strong) SPTrack *currentTrack;
 @property (nonatomic, strong) SPPlaybackManager *playbackManager;
+
+@property (nonatomic, strong) NSMutableArray *playlists;
 
 - (IBAction)playTrack:(id)sender;
 - (IBAction)setTrackPosition:(id)sender;
