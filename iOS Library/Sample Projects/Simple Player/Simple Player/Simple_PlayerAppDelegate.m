@@ -211,11 +211,11 @@
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	NSLog(@"logged in");
 	
-//    SPSession *session = [SPSession sharedSession];
-	//SPPlaylistContainer *container = session.userPlaylists;
 	[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession] timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedSession, NSArray *notLoadedSession) {
 		NSLog(@"Loaded session");
 		[dict setObject:[SPSession sharedSession].user.spotifyURL.absoluteString forKey:@"userURI"];
+		//[dict setObject:"event id or something forKey:@"event"];
+
 		[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession].userPlaylists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedContainers, NSArray *notLoadedContainers) {
 			NSLog(@"Loaded playlist container");
 			
@@ -227,12 +227,14 @@
 					for(SPPlaylistItem *playlistItem in playlist.items){
 						SPTrack *track = playlistItem.item;
 						[tracks addObject:track.spotifyURL.absoluteString];
+						NSLog(@"%@",track.name);
 					}
 				}
+				NSLog(@"%lu",(unsigned long)[tracks count]);
 				[dict setObject:tracks forKey:@"tracks"];
 				NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
 				NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-				NSLog(str);
+				//NSLog(@"%@",str);
 
 
 
@@ -241,10 +243,6 @@
 		}];
 
 	}];
-//		NSLog(@"After");
-	//NSLog(@"%@", container.description);
-	//NSLog(container.loaded ? @"Yes":@"No");
-
 }
 
 -(void)loadPlaylists
