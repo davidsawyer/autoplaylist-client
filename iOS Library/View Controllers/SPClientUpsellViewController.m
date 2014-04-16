@@ -84,6 +84,8 @@ static NSString * const kClientUpsellPageURL = @"http://ls.scdn.co/client-upsell
 																			 target:self
 																			 action:@selector(done)];
 	
+	
+	
 	self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	self.spinner.hidesWhenStopped = YES;
 	

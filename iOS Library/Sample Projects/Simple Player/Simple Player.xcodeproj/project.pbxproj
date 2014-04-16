@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1649164318FED83700E8D05D /* RoleChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649164118FED83700E8D05D /* RoleChoiceViewController.m */; };
+		1649164418FED83700E8D05D /* RoleChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1649164218FED83700E8D05D /* RoleChoiceViewController.xib */; };
 		1657027718F30ECC00B722B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657027618F30ECC00B722B3 /* Default-568h@2x.png */; };
 		37E8E0A81746325C000A9747 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8E0A71746325C000A9747 /* Security.framework */; };
 		5002BD6C1439DE2400FEAB3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5002BD6B1439DE2400FEAB3C /* AudioToolbox.framework */; };
@@ -53,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1649164018FED83700E8D05D /* RoleChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleChoiceViewController.h; sourceTree = "<group>"; };
+		1649164118FED83700E8D05D /* RoleChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoleChoiceViewController.m; sourceTree = "<group>"; };
+		1649164218FED83700E8D05D /* RoleChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoleChoiceViewController.xib; sourceTree = "<group>"; };
 		1657027618F30ECC00B722B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		37E8E0A71746325C000A9747 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5002BD6B1439DE2400FEAB3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -157,6 +162,9 @@
 				50AF49C91439CB6D00E4A5EF /* MainWindow_iPad.xib */,
 				50DBB5E01520BF6100BF516F /* SPLoginResources.bundle */,
 				50AF49B31439CB6D00E4A5EF /* Supporting Files */,
+				1649164018FED83700E8D05D /* RoleChoiceViewController.h */,
+				1649164118FED83700E8D05D /* RoleChoiceViewController.m */,
+				1649164218FED83700E8D05D /* RoleChoiceViewController.xib */,
 			);
 			path = "Simple Player";
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 				50AF49B71439CB6D00E4A5EF /* InfoPlist.strings in Resources */,
 				50AF49C41439CB6D00E4A5EF /* MainWindow_iPhone.xib in Resources */,
 				50AF49CB1439CB6D00E4A5EF /* MainWindow_iPad.xib in Resources */,
+				1649164418FED83700E8D05D /* RoleChoiceViewController.xib in Resources */,
 				1657027718F30ECC00B722B3 /* Default-568h@2x.png in Resources */,
 				50DBB5E11520BF6100BF516F /* SPLoginResources.bundle in Resources */,
 			);
@@ -263,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AF49B91439CB6D00E4A5EF /* main.m in Sources */,
+				1649164318FED83700E8D05D /* RoleChoiceViewController.m in Sources */,
 				50AF49BD1439CB6D00E4A5EF /* Simple_PlayerAppDelegate.m in Sources */,
 				50DBB5E41520C2B800BF516F /* RotatableViewController.m in Sources */,
 			);
@@ -366,6 +376,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -385,6 +396,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include\"";
 				WRAPPER_EXTENSION = app;
 			};
