@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161EF1551905AC06003343E5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 161EF1531905AC06003343E5 /* ConfirmationViewController.m */; };
+		161EF1561905AC06003343E5 /* ConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161EF1541905AC06003343E5 /* ConfirmationViewController.xib */; };
 		1649164318FED83700E8D05D /* RoleChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649164118FED83700E8D05D /* RoleChoiceViewController.m */; };
 		1649164418FED83700E8D05D /* RoleChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1649164218FED83700E8D05D /* RoleChoiceViewController.xib */; };
 		1657027718F30ECC00B722B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657027618F30ECC00B722B3 /* Default-568h@2x.png */; };
+		167402B61905977800DD1D64 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167402B41905977800DD1D64 /* EventViewController.m */; };
+		167402B71905977800DD1D64 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167402B51905977800DD1D64 /* EventViewController.xib */; };
 		37E8E0A81746325C000A9747 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8E0A71746325C000A9747 /* Security.framework */; };
 		5002BD6C1439DE2400FEAB3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5002BD6B1439DE2400FEAB3C /* AudioToolbox.framework */; };
 		5002BD7D1439E8E800FEAB3C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5002BD7C1439E8E800FEAB3C /* SystemConfiguration.framework */; };
@@ -55,10 +59,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161EF1521905AC06003343E5 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
+		161EF1531905AC06003343E5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
+		161EF1541905AC06003343E5 /* ConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationViewController.xib; sourceTree = "<group>"; };
 		1649164018FED83700E8D05D /* RoleChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleChoiceViewController.h; sourceTree = "<group>"; };
 		1649164118FED83700E8D05D /* RoleChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoleChoiceViewController.m; sourceTree = "<group>"; };
 		1649164218FED83700E8D05D /* RoleChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoleChoiceViewController.xib; sourceTree = "<group>"; };
 		1657027618F30ECC00B722B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		167402B31905977800DD1D64 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
+		167402B41905977800DD1D64 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		167402B51905977800DD1D64 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 		37E8E0A71746325C000A9747 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5002BD6B1439DE2400FEAB3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5002BD7C1439E8E800FEAB3C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -163,6 +173,12 @@
 				50DBB5E01520BF6100BF516F /* SPLoginResources.bundle */,
 				50AF49B31439CB6D00E4A5EF /* Supporting Files */,
 				1649164018FED83700E8D05D /* RoleChoiceViewController.h */,
+				167402B31905977800DD1D64 /* EventViewController.h */,
+				167402B41905977800DD1D64 /* EventViewController.m */,
+				167402B51905977800DD1D64 /* EventViewController.xib */,
+				161EF1521905AC06003343E5 /* ConfirmationViewController.h */,
+				161EF1531905AC06003343E5 /* ConfirmationViewController.m */,
+				161EF1541905AC06003343E5 /* ConfirmationViewController.xib */,
 				1649164118FED83700E8D05D /* RoleChoiceViewController.m */,
 				1649164218FED83700E8D05D /* RoleChoiceViewController.xib */,
 			);
@@ -260,7 +276,9 @@
 				50AF49CB1439CB6D00E4A5EF /* MainWindow_iPad.xib in Resources */,
 				1649164418FED83700E8D05D /* RoleChoiceViewController.xib in Resources */,
 				1657027718F30ECC00B722B3 /* Default-568h@2x.png in Resources */,
+				167402B71905977800DD1D64 /* EventViewController.xib in Resources */,
 				50DBB5E11520BF6100BF516F /* SPLoginResources.bundle in Resources */,
+				161EF1561905AC06003343E5 /* ConfirmationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AF49B91439CB6D00E4A5EF /* main.m in Sources */,
+				161EF1551905AC06003343E5 /* ConfirmationViewController.m in Sources */,
 				1649164318FED83700E8D05D /* RoleChoiceViewController.m in Sources */,
+				167402B61905977800DD1D64 /* EventViewController.m in Sources */,
 				50AF49BD1439CB6D00E4A5EF /* Simple_PlayerAppDelegate.m in Sources */,
 				50DBB5E41520C2B800BF516F /* RotatableViewController.m in Sources */,
 			);
