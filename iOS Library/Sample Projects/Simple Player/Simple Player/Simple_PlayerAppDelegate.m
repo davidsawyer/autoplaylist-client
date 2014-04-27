@@ -211,6 +211,8 @@
 	NSMutableArray *tracks = [NSMutableArray array];
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	NSLog(@"logged in");
+	//https://morning-meadow-1131.herokuapp.com
+	
 
 	[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession] timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedSession, NSArray *notLoadedSession) {
 		NSLog(@"Loaded session");
@@ -218,8 +220,8 @@
 		[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession].user timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedUser, NSArray *notLoadedUser) {
 			NSLog(@"Loaded user");
 
-			[dict setObject:[SPSession sharedSession].user.spotifyURL.absoluteString forKey:@"id"];
-			[dict setObject:@"23" forKey:@"event_id"];
+			[dict setObject:[SPSession sharedSession].user.spotifyURL.absoluteString forKey:@"uri"];
+			[dict setObject:@"3" forKey:@"event_id"];
 
 			[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession].userPlaylists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedContainers, NSArray *notLoadedContainers) {
 				NSLog(@"Loaded playlist container");
@@ -233,31 +235,58 @@
 						for(SPPlaylistItem *playlistItem in playlist.items){
 							SPTrack *track = playlistItem.item;
 							[unloadedTracks addObject:track];
-							NSLog(@"%@",track.name);
+							//NSLog(@"%@",track.name);
 						}
 					}
 
 					[SPAsyncLoading waitUntilLoaded:unloadedTracks timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedTracks, NSArray *notLoadedTracks){
 						for(SPTrack *track in loadedTracks){
-							[tracks addObject:track.spotifyURL.absoluteString];
-							NSLog(@"%@",track.name);
+							NSMutableDictionary *trackDict = [NSMutableDictionary dictionary];
+							[trackDict setObject:track.spotifyURL.absoluteString forKey:@"uri"];
+							[tracks addObject:trackDict];
+							//NSLog(@"%@",track.name);
 						}
 
 						NSLog(@"Track count: %lu",(unsigned long)[tracks count]);
 
 						// build JSON
-						[dict setObject:tracks forKey:@"tracks"];
+						[dict setObject:tracks forKey:@"tracks_attributes"];
 						NSMutableDictionary *wrapperDict = [NSMutableDictionary dictionary];
 						[wrapperDict setObject:dict forKey:@"user"];
 						NSData *jsonData = [NSJSONSerialization dataWithJSONObject:wrapperDict options:0 error:NULL];
 						NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
+						[self postDataToUrl:@"https://morning-meadow-1131.herokuapp.com/users.json" :jsonString];
 						NSLog(@"%@",jsonString);
 					}];
 				}];
 			}];
 		}];
 	}];
+}
+
+-(NSData *)postDataToUrl:(NSString*)urlString:(NSString*)jsonString
+{
+    NSData* responseData = nil;
+    NSURL *url=[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+	responseData = [NSMutableData data] ;
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
+    NSString *bodydata=[NSString stringWithFormat:@"data=%@",jsonString];
+	
+    [request setHTTPMethod:@"POST"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	NSData *req=[NSData dataWithBytes:[bodydata UTF8String] length:[bodydata length]];
+    [request setHTTPBody:req];
+    NSURLResponse* response;
+    NSError* error = nil;
+	[request allHTTPHeaderFields];
+	NSLog(@"Fields: ");
+	NSLog(@"%@",[request allHTTPHeaderFields]);
+    responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	
+    NSLog(@"the final output is:%@",responseString);
+	
+    return responseData;
 }
 
 -(void)loadPlaylists
